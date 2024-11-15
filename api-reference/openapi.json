@@ -1,195 +1,1025 @@
 {
-  "openapi": "3.0.1",
-  "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
-    "version": "1.0.0"
-  },
-  "servers": [
-    {
-      "url": "http://sandbox.mintlify.com"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
-  "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
-      }
-    }
-  }
+	"info": {
+		"_postman_id": "fa5e963b-9b62-4af9-9a97-089dbcd2709f",
+		"name": "Whacenter | Whatsapp API Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8030970",
+		"_collection_link": "https://www.postman.com/adikiss/whacenter/collection/kykgn30/whacenter-whatsapp-api-gateway?action=share&source=collection_link&creator=8030970"
+	},
+	"item": [
+		{
+			"name": "Info Device",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://app.whacenter.com/api/statusDevice?device_id=xxxx",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"statusDevice"
+					],
+					"query": [
+						{
+							"key": "device_id",
+							"value": "xxxx"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Info Device",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://app.whacenter.com/api/statusDevice?device_id=xxx",
+							"protocol": "https",
+							"host": [
+								"app",
+								"whacenter",
+								"com"
+							],
+							"path": [
+								"api",
+								"statusDevice"
+							],
+							"query": [
+								{
+									"key": "device_id",
+									"value": "xxx"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 May 2024 00:52:26 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "if false\r\n\r\n{\"status\":false,\"message\":\"device not connected or not found\",\"data\":[]}\r\n\r\nif true\r\n{\r\n  \"status\": true,\r\n  \"message\": \"success get device status\",\r\n  \"data\": {\r\n    \"status\": \"NOT CONNECTED\",\r\n    \"nomor\": \"628xxx\",\r\n    \"nama\": \"namadevice\",\r\n    \"qr\": \"timeout\"\r\n  }\r\n}"
+				},
+				{
+					"name": "Info Device",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://app.whacenter.com/api/statusDevice?device_id=e790cd0d8038b2afa6750ee5c286a00a",
+							"protocol": "https",
+							"host": [
+								"app",
+								"whacenter",
+								"com"
+							],
+							"path": [
+								"api",
+								"statusDevice"
+							],
+							"query": [
+								{
+									"key": "device_id",
+									"value": "e790cd0d8038b2afa6750ee5c286a00a"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 May 2024 00:53:34 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\"status\":true,\"message\":\"success get device status\",\"data\":{\"status\":\"NOT CONNECTED\",\"nomor\":\"083894904575\",\"nama\":\"axis\",\"qr\":\"2@O+HEOgu1dfffx0m3NLCCp11he52BuKJ1m739rguSg6M3ffLxUKMBZwFQeOL9VPXWeArS8VGbvcrZCQ==,HHEKWS6\\/8V7M4XnJ2wxe+9lbehJJlf7XLzTisE+6JCI=,+Y4+mv3MXGeeCsCSQ9NQ4Yq9qzzonUO\\/NZ52tD5Ltzc=,EJqEbPr4RdNWrc\\/I9k2kl9UgDB2S6M5CTw4FEqKzFGo=\"}}"
+				}
+			]
+		},
+		{
+			"name": "Scan QR Code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://app.whacenter.com/api/qr?device_id=xxx",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"qr"
+					],
+					"query": [
+						{
+							"key": "device_id",
+							"value": "xxx"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Webhook Url",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://app.whacenter.com/api/getWebhook?device_id=xxx",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"getWebhook"
+					],
+					"query": [
+						{
+							"key": "device_id",
+							"value": "xxx"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Webhook Url",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://app.whacenter.com/api/getWebhook?device_id=xxx",
+							"protocol": "https",
+							"host": [
+								"app",
+								"whacenter",
+								"com"
+							],
+							"path": [
+								"api",
+								"getWebhook"
+							],
+							"query": [
+								{
+									"key": "device_id",
+									"value": "xxx"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 May 2024 01:00:56 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "if false\r\n{\"status\":false,\"message\":\"device not connected or not found\",\"data\":[]}\r\n\r\nif true\r\n{\r\n  \"status\": true,\r\n  \"message\": \"success get webhook\",\r\n  \"data\": {\r\n    \"webhook\": urlwebhook\r\n  }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Set Webhook Url",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://app.whacenter.com/api/setWebhook?device_id=xxx&webhook=urlwebhook",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"setWebhook"
+					],
+					"query": [
+						{
+							"key": "device_id",
+							"value": "xxx"
+						},
+						{
+							"key": "webhook",
+							"value": "urlwebhook"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Message (POST)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device_id",
+							"value": "xxxx",
+							"type": "text"
+						},
+						{
+							"key": "number",
+							"value": "085640206067",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "hai",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://app.whacenter.com/api/send",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"send"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Send Message (POST)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "device_id",
+									"value": "xxxx",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "085640206067",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "hai",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://app.whacenter.com/api/send",
+							"protocol": "https",
+							"host": [
+								"app",
+								"whacenter",
+								"com"
+							],
+							"path": [
+								"api",
+								"send"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 May 2024 01:04:08 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "if false \r\n{\"status\":false,\"message\":\"device not connected or not found\",\"data\":[]}\r\n\r\nif true\r\n{\r\n  \"status\": true,\r\n  \"message\": \"message sent\",\r\n  \"data\": {\r\n    \"id\": xxx\r\n  }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Send Message (GET)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device_id",
+							"value": "xxxx",
+							"type": "text"
+						},
+						{
+							"key": "number",
+							"value": "085640206067",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "hai",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://app.whacenter.com/api/send",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"send"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Send Message (GET)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "device_id",
+									"value": "xxx",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "085640206067",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "hai",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://app.whacenter.com/api/send",
+							"protocol": "https",
+							"host": [
+								"app",
+								"whacenter",
+								"com"
+							],
+							"path": [
+								"api",
+								"send"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 May 2024 01:02:46 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "if false \r\n{\"status\":false,\"message\":\"device not connected or not found\",\"data\":[]}\r\n\r\nif true\r\n{\r\n  \"status\": true,\r\n  \"message\": \"message sent\",\r\n  \"data\": {\r\n    \"id\": xxx\r\n  }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Send Message Button",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device_id",
+							"value": "xxx",
+							"description": "harus multidevice",
+							"type": "text"
+						},
+						{
+							"key": "number",
+							"value": "085808980003",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "hai",
+							"type": "text"
+						},
+						{
+							"key": "button",
+							"value": "tes,halo,hai",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://app.whacenter.com/api/sendButton",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"sendButton"
+					]
+				},
+				"description": "**SEND BUTTON SUDAH TIDAK BISA DIGUNAKAN**"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Message to Group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device_id",
+							"value": "xxxx",
+							"type": "text"
+						},
+						{
+							"key": "group",
+							"value": "nama group",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "hai",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://app.whacenter.com/api/sendGroup",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"sendGroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Relog Device",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device_id",
+							"value": "xxxx",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://app.whacenter.com/api/relogDevice",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"relogDevice"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Relog Device",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "device_id",
+									"value": "xxxx",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://app.whacenter.com/api/relogDevice",
+							"protocol": "https",
+							"host": [
+								"app",
+								"whacenter",
+								"com"
+							],
+							"path": [
+								"api",
+								"relogDevice"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 May 2024 01:07:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "if false\r\n{\"status\":false,\"message\":\"device not connected or not found\",\"data\":[]}\r\n\r\nif true\r\n{\r\n  \"status\": true,\r\n  \"message\": \"berhasil relog device\",\r\n  \"data\": [\r\n    \r\n  ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Relog Device (GET)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device_id",
+							"value": "xxxx",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://app.whacenter.com/api/relogDevice",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"relogDevice"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Relog Device",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "device_id",
+									"value": "xxxx",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://app.whacenter.com/api/relogDevice",
+							"protocol": "https",
+							"host": [
+								"app",
+								"whacenter",
+								"com"
+							],
+							"path": [
+								"api",
+								"relogDevice"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 May 2024 01:07:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "if false\r\n{\"status\":false,\"message\":\"device not connected or not found\",\"data\":[]}\r\n\r\nif true\r\n{\r\n  \"status\": true,\r\n  \"message\": \"berhasil relog device\",\r\n  \"data\": [\r\n    \r\n  ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Send Schedule Message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device_id",
+							"value": "xxxx",
+							"type": "text"
+						},
+						{
+							"key": "number",
+							"value": "085640206067",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "hai",
+							"type": "text"
+						},
+						{
+							"key": "schedule",
+							"value": "2021-10-07 11:30:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://app.whacenter.com/api/send",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Schedule Message",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device_id",
+							"value": "xxxx",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "xxxx",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://app.whacenter.com/api/deleteMessage",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"deleteMessage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Message Image or File",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device_id",
+							"value": "xxxx",
+							"type": "text"
+						},
+						{
+							"key": "number",
+							"value": "6285640206067",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "tes kirim gambar",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"value": "https://i.ibb.co/S5GYRNL/bird-thumbnail.jpg",
+							"description": "url file / image",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://app.whacenter.com/api/send",
+					"protocol": "https",
+					"host": [
+						"app",
+						"whacenter",
+						"com"
+					],
+					"path": [
+						"api",
+						"send"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Send Message Image or File",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "device_id",
+									"value": "xxxx",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "6285640206067",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "tes kirim gambar",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"value": "https://i.ibb.co/S5GYRNL/bird-thumbnail.jpg",
+									"description": "url file / image",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://app.whacenter.com/api/send",
+							"protocol": "https",
+							"host": [
+								"app",
+								"whacenter",
+								"com"
+							],
+							"path": [
+								"api",
+								"send"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 May 2024 01:10:52 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "if false \r\n{\"status\":false,\"message\":\"device not connected or not found\",\"data\":[]}\r\n\r\nif true\r\n{\r\n  \"status\": true,\r\n  \"message\": \"message sent\",\r\n  \"data\": {\r\n    \"id\": xxx\r\n  }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Webhook",
+			"request": {
+				"method": "VIEW",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \n  \"from\": \"6285603051722\",\n  \"to\": \"6285156108635\",\n  \"message\": \"help\",\n  \"media\": \"url\",\n  \"timestamp\": \"2021-10-10 11:49:50\",\n\n}"
+				}
+			},
+			"response": []
+		}
+	]
 }
